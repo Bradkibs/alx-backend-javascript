@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node",
+    "lint": "eslint --ext .js --fix",
     "test": "jest --coverage --verbose"
   },
   "keywords": [],
