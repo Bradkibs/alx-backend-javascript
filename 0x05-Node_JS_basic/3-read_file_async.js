@@ -5,10 +5,10 @@ async function countStudents(path) {
     * if the db is not available it throws an error
     * else it logs Number of students: NUMBER_OF_STUDENTS
     * and Number of students in FIELD: 6. List: LIST_OF_FIRSTNAMES */
-    fs.readFile(path, 'utf8', (err, data) => {
-        if (err) {
-		throw new Error('Cannot load the database');
-	}
+  fs.readFile(path, 'utf8', (err, data) => {
+    if (err) {
+      throw new Error('Cannot load the database');
+    }
     const lines = data.trim().split('\n');
     const headers = lines[0].split(',');
 
