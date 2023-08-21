@@ -5,8 +5,10 @@ async function countStudents(path) {
     * if the db is not available it throws an error
     * else it logs Number of students: NUMBER_OF_STUDENTS
     * and Number of students in FIELD: 6. List: LIST_OF_FIRSTNAMES */
-  try {
-    const data = await fs.readFile(path, 'utf8');
+    fs.readFile(path, 'utf8', (err, data) => {
+        if (err) {
+		throw new Error('Cannot load the database');
+	}
     const lines = data.trim().split('\n');
     const headers = lines[0].split(',');
 
@@ -30,8 +32,6 @@ async function countStudents(path) {
     for (const obj of fieldInfo) {
       console.log(`Number of students in ${obj.field}: ${obj.count}. List: ${obj.first_names.join(', ')}`);
     }
-  } catch (error) {
-    throw new Error('Cannot load the database');
-  }
+  });
 }
 module.exports = countStudents;
