@@ -10,7 +10,7 @@ async function countStudents(path) {
     fs.readFile(path, 'utf8', (err, data) => {
       if (err) {
         reject(new Error('Cannot load the database'));
-	return;
+        return;
       }
       const lines = data.trim().split('\n');
       const headers = lines[0].split(',');
