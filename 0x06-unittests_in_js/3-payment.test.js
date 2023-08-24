@@ -9,8 +9,8 @@ describe("sendPaymentRequestToApi", () => {
 	const consoleSpy = sinon.spy(console, 'log');
 	sendPaymentRequestToApi(100, 20);
 
-	sinon.assert.calledWith(calculateNumberSpy, 'SUM', 100, 20);
-	sinon.assert.calledWith(consoleSpy, 'The total is: 120');
+	expect(calculateNumberSpy.calledWith('SUM', 100, 20)).to.be.true;
+	expect(consoleSpy.calledWith('The total is: 120')).to.be.true;
 	consoleSpy.restore();
 	calculateNumberSpy.restore();
 	
